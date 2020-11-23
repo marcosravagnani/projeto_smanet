@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/pesquisar"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="TODO" />
+
+    <item android:id="@+id/cadastrar_cliente"
+        android:title="Cadastrar Cliente"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_lock_idle_charging"/>
+
+    <item android:id="@+id/cadastrar_contrato"
+        android:title="Cadastrar Contrato"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_delete"/>
+
+
+</menu>

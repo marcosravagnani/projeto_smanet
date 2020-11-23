@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "781064345210",
+    "firebase_url": "https://projetosmanet.firebaseio.com",
+    "project_id": "projetosmanet",
+    "storage_bucket": "projetosmanet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781064345210:android:cda5a05a08254329d74dc3",
+        "android_client_info": {
+          "package_name": "com.example.projeto_smanet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "781064345210-0ekes9tkal2ejcvhu33knabq1o1p4fa0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projeto_smanet",
+            "certificate_hash": "61e13aa551fe4d3d9262157ea0b771e0a4d54f80"
+          }
+        },
+        {
+          "client_id": "781064345210-8dma0mmkrbf726r5a7snhlp0qh7kt7og.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGyoKVF4STXxmaVGchNoNfdzeNDvyZKUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "781064345210-8dma0mmkrbf726r5a7snhlp0qh7kt7og.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
