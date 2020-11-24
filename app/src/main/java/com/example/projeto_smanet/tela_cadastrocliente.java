@@ -13,7 +13,7 @@ public class tela_cadastrocliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_cadastrocliente);
     }
-//botão voltar
+/*botão voltar
     @Override
     public void voltar (View view) {
         startActivity(new Intent(tela_cadastrocliente.this, MainActivity.class));
@@ -24,5 +24,5 @@ public class tela_cadastrocliente extends AppCompatActivity {
     public void cadastrar_contrato (View view) {
         startActivity(new Intent(tela_cadastrocliente.this, tela_cadastrocontrato.class));
 
-    }
+    }*/
 }

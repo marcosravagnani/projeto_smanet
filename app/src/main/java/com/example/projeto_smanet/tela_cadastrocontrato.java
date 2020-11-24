@@ -14,9 +14,9 @@ public class tela_cadastrocontrato extends AppCompatActivity {
         setContentView(R.layout.tela_cadastrocontrato);
     }
 
-    @Override
+    /*@Override
     public void voltar (View view) {
         startActivity(new Intent(tela_cadastrocontrato.this, MainActivity.class));
 
-    }
+    }*/
 }
