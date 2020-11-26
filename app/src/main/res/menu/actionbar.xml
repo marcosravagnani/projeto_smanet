@@ -16,5 +16,9 @@
         app:showAsAction="never"
         android:icon="@android:drawable/ic_delete"/>
 
+    <item android:id="@+id/cadastrar_contrato"
+        android:title="Sair"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_delete"/>
 
 </menu>
