@@ -25,21 +25,23 @@ public class tela_cadastrocliente extends AppCompatActivity {
         Button tela_principal = (Button)findViewById(R.id.btn_voltarmenu);
         Button btn_cadastrar = (Button)findViewById(R.id.btn_cadastrar);
 
+        //chama tela de cadastro de contrato
+        tela_contrato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(tela_cadastrocliente.this, tela_cadastrocontrato.class));
+            }
+        });
 
+        //chama tela de menu Main Activity
+        tela_principal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(tela_cadastrocliente.this, MainActivity.class));
+            }
+        });
     }
 
 
-/*botão voltar
 
-    @Override
-    public void voltar (View view) {
-        startActivity(new Intent(tela_cadastrocliente.this, MainActivity.class));
-
-    }
-//botão cadastrar contrato
-    @Override
-    public void cadastrar_contrato (View view) {
-        startActivity(new Intent(tela_cadastrocliente.this, tela_cadastrocontrato.class));
-
-    }*/
 }

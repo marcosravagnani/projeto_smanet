@@ -3,10 +3,12 @@ package com.example.projeto_smanet;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,11 +32,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cadastrar_cliente:
-                Toast.makeText(getApplicationContext(), "tela cadastrar cliente", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, tela_cadastrocliente.class));
                 return (true);
+            case R.id.cadastrar_contrato:
+                startActivity(new Intent(MainActivity.this, tela_cadastrocontrato.class));
+                return (true);
+            case R.id.sair:
+                startActivity(new Intent(MainActivity.this, tela_login.class));
         }
         return (super.onOptionsItemSelected(item));
 
     }
+
 
 }

@@ -43,7 +43,7 @@
         android:text="Plano 100 Mbps" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edt_valorplano"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,7 +51,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edt_loginpoe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -59,7 +59,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edt_senhapoe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -73,7 +73,7 @@
         android:text="cadastrar contrato" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_voltarmenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="voltar"
