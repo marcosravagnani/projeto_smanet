@@ -27,6 +27,7 @@ public class tela_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_login);
+        eventoClick();
 
         edt_login = (EditText) findViewById(R.id.edt_login);
         edt_senha = (EditText) findViewById(R.id.edt_senha);
