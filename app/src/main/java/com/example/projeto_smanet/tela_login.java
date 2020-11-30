@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,67 +17,72 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class tela_login extends AppCompatActivity {
-    Button btn_entrar;
-    EditText edt_login, edt_senha;
+import java.nio.file.FileVisitResult;
 
-    private FirebaseAuth auth;
-    private FirebaseUser user;
+public class tela_login extends AppCompatActivity {
+    private Button btn_entrar, btn_limpar;
+    private EditText edt_login, edt_senha;
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_login);
-        eventoClick();
+
+        mAuth = FirebaseAuth.getInstance();
 
         edt_login = (EditText) findViewById(R.id.edt_login);
         edt_senha = (EditText) findViewById(R.id.edt_senha);
         btn_entrar = (Button) findViewById(R.id.btn_entrar);
+        btn_limpar = (Button) findViewById(R.id.btn_limpar);
+
 
         btn_entrar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String email = edt_login.getText().toString().trim();
-                String password = edt_senha.getText().toString().trim();
-
-                loginMethod(email, password);
+            public void onClick(View v) {
+                loginUser(edt_login.getText().toString(), edt_senha.getText().toString());
             }
         });
-
-    }
-
-    private void loginMethod(String email, String password) {
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(tela_login.this, new OnCompleteListener<AuthResult>() {
+        btn_limpar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Intent i = new Intent(tela_login.this, MainActivity.class);
-                    startActivity(i);
-                }else{
-                    alert("Email ou senha incorretos");
-                }
+            public void onClick(View v) {
+                edt_senha.setText("");
+                edt_login.setText("");
             }
         });
 
-    }
 
-    private void alert(String email_ou_senha_incorretos) {
-        Toast.makeText(tela_login.this, email_ou_senha_incorretos, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        auth = conexaoBD.getFirebaseAuth();
-        user = conexaoBD.getFirebaseUser();
     }
 
 
-/*valida login e senha
-    public void valida (View view) {
-        if (edt_login.getText().toString().equals("admin") && edt_senha.getText().toString().equals("admin"))
-            startActivity(new Intent(tela_login.this, MainActivity.class));
-        else
-            Toast.makeText(this, "usuário ou senha inválido", Toast.LENGTH_LONG).show();
-    }*/
+    private void loginUser(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(getApplicationContext(), "Login ok", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                            // ...
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
 }
