@@ -42,7 +42,13 @@ public class tela_cadastrocliente extends AppCompatActivity {
         btn_cadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               dadosCliente(edt_cpf.getText().toString(), edt_nome.getText().toString(), edt_telefone.getText().toString());
+                Pessoa p = new Pessoa();
+                p.setCpf(edt_cpf.getText().toString());
+                p.setNome(edt_nome.getText().toString());
+                p.setTelefone(edt_telefone.getText().toString());
+                databaseReference.child("Cliente").child(p.getCpf()).setValue(p);
+
+                //dadosCliente(edt_cpf.getText().toString(), edt_nome.getText().toString(), edt_telefone.getText().toString());
             }
         });
 
@@ -61,13 +67,22 @@ public class tela_cadastrocliente extends AppCompatActivity {
                 startActivity(new Intent(tela_cadastrocliente.this, MainActivity.class));
             }
         });
+
     }
-    private void dadosCliente(String nome, String cpf, String telefone){
-        tela_cadastrocliente tc = new tela_cadastrocliente();
-        tc.setCpf(edt_cpf.getText().toString());
-        tc.setNome(edt_nome.getText().toString());
-        tc.setTelefone(edt_telefone.getText().toString());
-        databaseReference.child("Cliente").child(tc.getCpf()).setValue(tc);
+
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(tela_cadastrocliente.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
+    }
+    /*private void dadosCliente(String nome, String cpf, String telefone){
+
+        Pessoa p = new Pessoa();
+        p.setCpf(edt_cpf.getText().toString());
+        p.setNome(edt_nome.getText().toString());
+        p.setTelefone(edt_telefone.getText().toString());
+        databaseReference.child("Cliente").child(p.getCpf()).setValue(p);
+
     }
 
     private void inicializarFirebase(){
@@ -108,7 +123,7 @@ public class tela_cadastrocliente extends AppCompatActivity {
     @Override
     public String toString(){
         return cpf;
-    }
+    }*/
 
 
 }
