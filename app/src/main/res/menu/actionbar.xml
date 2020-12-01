@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/pesquisar"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom|collapseActionView"
         android:icon="@android:drawable/ic_menu_search"
+        app:actionViewClass="android.widget.SearchView"
         android:title="TODO" />
 
     <item android:id="@+id/cadastrar_cliente"

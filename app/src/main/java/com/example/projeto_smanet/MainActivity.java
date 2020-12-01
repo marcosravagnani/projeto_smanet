@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -77,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.actionbar, menu);
+        MenuItem menuItem = menu.findItem(R.id.pesquisar);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Digite nome");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                arrayAdapterPessoa.getFilter().filter(newText);
+                return true;
+            }
+        });
+
         return super.onCreateOptionsMenu(menu);
     }
 
