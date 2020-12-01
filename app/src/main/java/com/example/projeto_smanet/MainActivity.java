@@ -1,5 +1,6 @@
 package com.example.projeto_smanet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,15 +10,67 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    ListView list_dados;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
+    private List<Pessoa> pessoaList = new ArrayList<Pessoa>();
+    private ArrayAdapter<Pessoa> arrayAdapterPessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        list_dados = (ListView)findViewById(R.id.list_dados);
+        inicializarFirebase();
+        eventoDatabase();
 
+    }
+    //método para adicionao novos dados
+    private void eventoDatabase(){
+        databaseReference.child("Cliente").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                pessoaList.clear();
+                for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
+                    Pessoa p = objSnapshot.getValue(Pessoa.class);
+                    pessoaList.add(p);
+                }
+                arrayAdapterPessoa = new ArrayAdapter<Pessoa>(MainActivity.this,
+                        android.R.layout.simple_list_item_1, pessoaList);
+                list_dados.setAdapter(arrayAdapterPessoa);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void inicializarFirebase(){
+        FirebaseApp.initializeApp(MainActivity.this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference = firebaseDatabase.getReference();
     }
     //método inflar actionbar
     @Override

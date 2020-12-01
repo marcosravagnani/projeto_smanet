@@ -47,10 +47,12 @@ public class tela_cadastrocliente extends AppCompatActivity {
                 p.setNome(edt_nome.getText().toString());
                 p.setTelefone(edt_telefone.getText().toString());
                 databaseReference.child("Cliente").child(p.getCpf()).setValue(p);
+                limparCampos();
 
                 //dadosCliente(edt_cpf.getText().toString(), edt_nome.getText().toString(), edt_telefone.getText().toString());
             }
         });
+
 
         //chama tela de cadastro de contrato
         tela_contrato.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,11 @@ public class tela_cadastrocliente extends AppCompatActivity {
             }
         });
 
+    }
+    private void limparCampos(){
+        edt_cpf.setText("");
+        edt_nome.setText("");
+        edt_telefone.setText("");
     }
 
     private void inicializarFirebase(){
