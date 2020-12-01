@@ -5,7 +5,7 @@
         app:showAsAction="ifRoom|collapseActionView"
         android:icon="@android:drawable/ic_menu_search"
         app:actionViewClass="android.widget.SearchView"
-        android:title="TODO" />
+        android:title="Pesquisar" />
 
     <item android:id="@+id/cadastrar_cliente"
         android:title="Cadastrar Cliente"

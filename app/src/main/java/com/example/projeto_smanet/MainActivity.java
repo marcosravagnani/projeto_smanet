@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Pessoa> pessoaList = new ArrayList<Pessoa>();
     private ArrayAdapter<Pessoa> arrayAdapterPessoa;
 
+    Pessoa pessoaSelecionada;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,21 @@ public class MainActivity extends AppCompatActivity {
         list_dados = (ListView)findViewById(R.id.list_dados);
         inicializarFirebase();
         eventoDatabase();
+
+        list_dados.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pessoaSelecionada = (Pessoa)parent.getItemAtPosition(position);
+
+                startActivity(new Intent(MainActivity.this, tela_cadastrocliente.class));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
     //método para adicionao novos dados

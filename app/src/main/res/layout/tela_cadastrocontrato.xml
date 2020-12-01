@@ -18,29 +18,32 @@
         android:layout_height="wrap_content"
         android:text="Nome do cliente " />
 
-    <RadioButton
-        android:id="@+id/radioButton"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plano 10 Mbps" />
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/plano10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Plano 10 Mbps" />
+        <RadioButton
+            android:id="@+id/plano30"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Plano 30 Mbps" />
+        <RadioButton
+            android:id="@+id/plano60"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Plano 60 Mbps" />
+         <RadioButton
+            android:id="@+id/plano100"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Plano 100 Mbps" />
+    </RadioGroup>
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plano 30 Mbps" />
 
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plano 60 Mbps" />
-
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Plano 100 Mbps" />
 
     <EditText
         android:id="@+id/edt_valorplano"
@@ -78,5 +81,6 @@
         android:layout_height="wrap_content"
         android:onClick="voltar"
         android:text="voltar ao menu" />
+
 
 </LinearLayout>
