@@ -20,6 +20,7 @@
 
     <RadioGroup
         android:layout_width="match_parent"
+        android:id="@+id/radio_grupo"
         android:layout_height="wrap_content">
         <RadioButton
             android:id="@+id/plano10"
