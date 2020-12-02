@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item android:id="@+id/pesquisar"
         app:showAsAction="ifRoom|collapseActionView"
         android:icon="@android:drawable/ic_menu_search"
         app:actionViewClass="android.widget.SearchView"
         android:title="Pesquisar" />
 
-    <item android:id="@+id/cadastrar_cliente"
-        android:title="Cadastrar Cliente"
+    <item android:id="@+id/novo_cliente"
         app:showAsAction="never"
-        android:icon="@android:drawable/ic_lock_idle_charging"/>
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Cadastrar Usuário" />
+
+    <item android:id="@+id/alterar"
+        app:showAsAction="never"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Alterar dados" />
 
     <item android:id="@+id/cadastrar_contrato"
         android:title="Cadastrar Contrato"

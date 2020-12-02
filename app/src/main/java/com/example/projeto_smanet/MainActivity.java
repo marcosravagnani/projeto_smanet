@@ -29,6 +29,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText edt_nome, edt_cpf, edt_telefone;
+
     ListView list_dados;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -43,9 +45,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         list_dados = (ListView)findViewById(R.id.list_dados);
+        edt_nome = (EditText) findViewById(R.id.edt_nomecliente);
+        edt_cpf = (EditText) findViewById(R.id.edt_cpfcliente);
+        edt_telefone = (EditText) findViewById(R.id.edt_telefone);
+
         inicializarFirebase();
         eventoDatabase();
 
+        list_dados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                pessoaSelecionada = (Pessoa)parent.getItemAtPosition(position);
+                edt_nome.setText(pessoaSelecionada.getNome());
+                edt_cpf.setText(pessoaSelecionada.getCpf());
+                edt_telefone.setText(pessoaSelecionada.getTelefone());
+            }
+        });
+
+        //implementando listview
         list_dados.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -62,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    //método para adicionao novos dados
+    //método para adiciona novos dados
     private void eventoDatabase(){
         databaseReference.child("Cliente").addValueEventListener(new ValueEventListener() {
             @Override
@@ -94,8 +111,7 @@ public class MainActivity extends AppCompatActivity {
     //método inflar actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.actionbar, menu);
+        getMenuInflater().inflate(R.menu.actionbar,menu);
         MenuItem menuItem = menu.findItem(R.id.pesquisar);
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Digite nome");
@@ -116,13 +132,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    //teste de click (mudar para chamar tela)
+    //ação dos botões da action bar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.cadastrar_cliente:
-                startActivity(new Intent(MainActivity.this, tela_cadastrocliente.class));
-                return (true);
+            case R.id.novo_cliente:
+                Pessoa p = new Pessoa();
+                p.setCpf(edt_cpf.getText().toString());
+                p.setNome(edt_nome.getText().toString());
+                p.setTelefone(edt_telefone.getText().toString());
+                databaseReference.child("Cliente").child(p.getCpf()).setValue(p);
+                limparCampos();
+                break;
+            case R.id.alterar:
+                Pessoa p2 = new Pessoa();
+                p2.setCpf(pessoaSelecionada.getCpf());
+                p2.setCpf(edt_cpf.getText().toString().trim());
+                p2.setNome(edt_nome.getText().toString().trim());
+                p2.setTelefone(edt_telefone.getText().toString().trim());
+                databaseReference.child("Cliente").child(p2.getCpf()).setValue(p2);
+                limparCampos();
+                break;
             case R.id.cadastrar_contrato:
                 startActivity(new Intent(MainActivity.this, tela_cadastrocontrato.class));
                 return (true);
@@ -130,6 +160,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, tela_login.class));
         }
         return (super.onOptionsItemSelected(item));
+
+    }
+
+    private void limparCampos() {
+        edt_cpf.setText("");
+        edt_nome.setText("");
+        edt_telefone.setText("");
+
 
     }
 

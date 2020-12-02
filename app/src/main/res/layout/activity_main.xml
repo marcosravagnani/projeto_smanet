@@ -9,6 +9,37 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/txt_telacadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="CADASTRO DE CLIENTE" />
+
+    <EditText
+        android:id="@+id/edt_nomecliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Digite nome completo"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edt_cpfcliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Digite CPF"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edt_telefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Digite Telefone"
+        android:inputType="textPersonName" />
+
+    <TextView
         android:id="@+id/txt_menuprincipal"
         android:layout_width="match_parent"
         android:layout_height="40dp"
