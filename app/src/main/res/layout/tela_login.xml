@@ -11,33 +11,50 @@
 
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:text="Login usuário"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp" />
+
     <EditText
         android:id="@+id/edt_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="monospace"
         android:hint="login"
-        android:inputType="textPersonName" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/edt_senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:fontFamily="monospace"
         android:hint="senha"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btn_entrar"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:onClick="valida"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:fontFamily="monospace"
         android:text="ENTRAR" />
 
     <Button
         android:id="@+id/btn_limpar"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="monospace"
         android:text="limpar dados" />
 
 </LinearLayout>

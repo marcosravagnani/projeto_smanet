@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Pessoa> pessoaList = new ArrayList<Pessoa>();
     private ArrayAdapter<Pessoa> arrayAdapterPessoa;
+    private InfoContrato infoContrato;
 
     Pessoa pessoaSelecionada;
 
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
+
     }
     //método inflar actionbar
     @Override
@@ -142,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 p.setCpf(edt_cpf.getText().toString());
                 p.setNome(edt_nome.getText().toString());
                 p.setTelefone(edt_telefone.getText().toString());
-
                 databaseReference.child("Cliente").child(p.getCpf()).setValue(p);
                 limparCampos();
                 break;
@@ -152,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 p2.setCpf(edt_cpf.getText().toString().trim());
                 p2.setNome(edt_nome.getText().toString().trim());
                 p2.setTelefone(edt_telefone.getText().toString().trim());
-
                 databaseReference.child("Cliente").child(p2.getCpf()).setValue(p2);
                 limparCampos();
                 break;
