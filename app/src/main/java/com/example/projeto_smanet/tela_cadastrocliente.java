@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.projeto_smanet.modulo.Pessoa;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -82,55 +83,5 @@ public class tela_cadastrocliente extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
     }
-    /*private void dadosCliente(String nome, String cpf, String telefone){
-
-        Pessoa p = new Pessoa();
-        p.setCpf(edt_cpf.getText().toString());
-        p.setNome(edt_nome.getText().toString());
-        p.setTelefone(edt_telefone.getText().toString());
-        databaseReference.child("Cliente").child(p.getCpf()).setValue(p);
-
-    }
-
-    private void inicializarFirebase(){
-        FirebaseApp.initializeApp(tela_cadastrocliente.this);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-    }
-
-    //método construtor da classe
-    public tela_cadastrocliente() {
-
-    }
-
-//get and set
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-    @Override
-    public String toString(){
-        return cpf;
-    }*/
-
 
 }

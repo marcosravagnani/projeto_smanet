@@ -9,10 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.FirebaseApp;;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -59,51 +57,7 @@ public class tela_cadastrocontrato extends AppCompatActivity {
                 startActivity(new Intent(tela_cadastrocontrato.this, MainActivity.class));
             }
         });
-
-        /*public void cadastrarContrato(String plano, String valor, String login, String senha){
-            String key = databaseReference.child("infocontrato").push().getKey();
-            infocontrato.setValor(valor);
-            infocontrato.setPlano(plano);
-            infocontrato.setLogin(login);
-            infocontrato.setSenha(senha);
-
-            databaseReference.child("key").setValue(infocontrato);
-            Toast.makeText()
-        }*/
-
-        /*cadastrar_contrato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int checkId = radio_grupo.getCheckedRadioButtonId();
-
-                if (checkId == -1) {
-                    //Se for -1 significa que nenhum id foi selecionado
-                    Toast.makeText(tela_cadastrocontrato.this, "Nenhum botão selecionado", Toast.LENGTH_LONG).show();
-                } else {
-                    encontrarRadioButton(checkId);
-                }
-
-            }
-        });*/
     }
-    /*private void  encontrarRadioButton(int checkId){
-        switch (checkId){
-            case R.id.plano10:
-                String plano = String.valueOf(checkId);
-                break;
-            case R.id.plano30:
-                String plano1 = String.valueOf(checkId);
-                break;
-            case R.id.plano60:
-            String plano2 = String.valueOf(checkId);
-            break;
-            case R.id.plano100:
-                String plano3 = String.valueOf(checkId);
-                break;
-
-        }
-
-    }*/
 }
 
 

@@ -9,7 +9,7 @@
         android:title="Pesquisar" />
 
     <item android:id="@+id/novo_cliente"
-        app:showAsAction="never"
+        app:showAsAction="always"
         android:icon="@android:drawable/ic_menu_add"
         android:title="Cadastrar Usuário" />
 

@@ -17,8 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.nio.file.FileVisitResult;
-
 public class tela_login extends AppCompatActivity {
     private Button btn_entrar, btn_limpar;
     private EditText edt_login, edt_senha;
@@ -65,7 +63,7 @@ public class tela_login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(), "Login ok", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Login realizado com sucesso", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -74,7 +72,7 @@ public class tela_login extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                            Toast.makeText(getApplicationContext(), "Usuário ou senha incorretos",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                             // ...
